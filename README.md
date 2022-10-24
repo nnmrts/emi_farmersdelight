@@ -1,4 +1,4 @@
-# EMICompat
+# EMI Farmer's Delight
 
 Add other mod compatibility to EMI
 

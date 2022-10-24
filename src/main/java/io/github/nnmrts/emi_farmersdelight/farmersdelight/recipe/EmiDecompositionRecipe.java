@@ -1,4 +1,4 @@
-package me.chikage.emicompat.farmersdelight.recipe;
+package io.github.nnmrts.emi_farmersdelight.farmersdelight.recipe;
 
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
 import dev.emi.emi.EmiPort;
@@ -8,8 +8,8 @@ import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.DrawableWidget.DrawableWidgetConsumer;
+import io.github.nnmrts.emi_farmersdelight.farmersdelight.FarmersDelightPlugin;
 import dev.emi.emi.api.widget.WidgetHolder;
-import me.chikage.emicompat.farmersdelight.FarmersDelightPlugin;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -22,7 +22,8 @@ import java.util.PrimitiveIterator;
 import java.util.stream.IntStream;
 
 public class EmiDecompositionRecipe implements EmiRecipe {
-    private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(FarmersDelightMod.MOD_ID, "textures/gui/rei/decomposition.png");
+    private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(FarmersDelightMod.MOD_ID,
+            "textures/gui/rei/decomposition.png");
     private static final EmiTexture BACKGROUND = new EmiTexture(GUI_TEXTURE, 8, 9, 102, 40);
 
     private static final DrawableWidgetConsumer NULL_RENDERABLE = (arg0, arg1, arg2, arg3) -> {
@@ -75,15 +76,17 @@ public class EmiDecompositionRecipe implements EmiRecipe {
         }
 
         gui.addDrawable(33, 30, 13, 13, NULL_RENDERABLE)
-                .tooltip(((mouseX, mouseY) -> List.of(ClientTooltipComponent.create(EmiPort.translatable("farmersdelight.rei.decomposition.light").getVisualOrderText()))));
+                .tooltip(((mouseX, mouseY) -> List.of(ClientTooltipComponent
+                        .create(EmiPort.translatable("farmersdelight.rei.decomposition.light").getVisualOrderText()))));
 
         gui.addDrawable(46, 30, 13, 13, NULL_RENDERABLE)
-                .tooltip(((mouseX, mouseY) -> List.of(ClientTooltipComponent.create(EmiPort.translatable("farmersdelight.rei.decomposition.fluid").getVisualOrderText()))));
+                .tooltip(((mouseX, mouseY) -> List.of(ClientTooltipComponent
+                        .create(EmiPort.translatable("farmersdelight.rei.decomposition.fluid").getVisualOrderText()))));
 
         gui.addDrawable(59, 30, 13, 13, NULL_RENDERABLE)
-                .tooltip(((mouseX, mouseY) -> List.of(ClientTooltipComponent.create(EmiPort.translatable("farmersdelight.rei.decomposition.accelerators").getVisualOrderText()))));
+                .tooltip(((mouseX, mouseY) -> List.of(ClientTooltipComponent.create(
+                        EmiPort.translatable("farmersdelight.rei.decomposition.accelerators").getVisualOrderText()))));
     }
-
 
     @Override
     public boolean supportsRecipeTree() {

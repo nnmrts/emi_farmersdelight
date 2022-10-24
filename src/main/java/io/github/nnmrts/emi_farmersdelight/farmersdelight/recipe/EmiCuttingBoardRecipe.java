@@ -1,4 +1,4 @@
-package me.chikage.emicompat.farmersdelight.recipe;
+package io.github.nnmrts.emi_farmersdelight.farmersdelight.recipe;
 
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
 import com.nhoryzon.mc.farmersdelight.recipe.CuttingBoardRecipe;
@@ -8,14 +8,15 @@ import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
-import me.chikage.emicompat.farmersdelight.FarmersDelightPlugin;
+import io.github.nnmrts.emi_farmersdelight.farmersdelight.FarmersDelightPlugin;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class EmiCuttingBoardRecipe implements EmiRecipe {
-    private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(FarmersDelightMod.MOD_ID, "textures/gui/rei/cutting_board.png");
+    private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(FarmersDelightMod.MOD_ID,
+            "textures/gui/rei/cutting_board.png");
     private static final EmiTexture BACKGROUND = new EmiTexture(GUI_TEXTURE, 0, 0, 117, 57);
 
     protected final EmiRecipeCategory category;
@@ -57,10 +58,9 @@ public class EmiCuttingBoardRecipe implements EmiRecipe {
         for (int row = 0; row < 2; ++row) {
             for (int col = 0; col < 2; ++col) {
                 final int i = row * 2 + col;
-                EmiStack stack = (
-                        i < output.size()
-                                ? output.get(i)
-                                : EmiStack.EMPTY);
+                EmiStack stack = (i < output.size()
+                        ? output.get(i)
+                        : EmiStack.EMPTY);
                 gui.addSlot(stack,
                         77 + col * slotSize,
                         11 + row * slotSize);

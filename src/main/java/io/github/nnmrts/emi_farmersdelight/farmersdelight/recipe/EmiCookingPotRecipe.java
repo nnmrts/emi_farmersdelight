@@ -1,4 +1,4 @@
-package me.chikage.emicompat.farmersdelight.recipe;
+package io.github.nnmrts.emi_farmersdelight.farmersdelight.recipe;
 
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
 import com.nhoryzon.mc.farmersdelight.recipe.CookingPotRecipe;
@@ -9,7 +9,7 @@ import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
-import me.chikage.emicompat.farmersdelight.FarmersDelightPlugin;
+import io.github.nnmrts.emi_farmersdelight.farmersdelight.FarmersDelightPlugin;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -22,7 +22,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class EmiCookingPotRecipe implements EmiRecipe {
-    private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(FarmersDelightMod.MOD_ID, "textures/gui/cooking_pot.png");
+    private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(FarmersDelightMod.MOD_ID,
+            "textures/gui/cooking_pot.png");
 
     private static final EmiTexture BACKGROUND = new EmiTexture(GUI_TEXTURE, 29, 16, 117, 57);
 
@@ -39,7 +40,6 @@ public class EmiCookingPotRecipe implements EmiRecipe {
     public EmiCookingPotRecipe(CookingPotRecipe recipe) {
         this.recipe = recipe;
 
-
         this.category = FarmersDelightPlugin.COOKING;
         this.id = recipe.getId();
         this.width = BACKGROUND.width;
@@ -51,11 +51,11 @@ public class EmiCookingPotRecipe implements EmiRecipe {
                 .toList();
         this.container = List.of(EmiIngredient.of(Ingredient.of(recipe.getContainer())));
 
-
         this.input = Stream.of(container, ingredients).flatMap(Collection::stream).collect(Collectors.toList());
 
         for (EmiIngredient ingredient : ingredients) {
-            if (ingredient.isEmpty()) continue;
+            if (ingredient.isEmpty())
+                continue;
             for (EmiStack stack : ingredient.getEmiStacks()) {
                 Item item = stack.getItemStack().getItem();
                 Item remainder = item.getCraftingRemainingItem();
@@ -71,9 +71,8 @@ public class EmiCookingPotRecipe implements EmiRecipe {
         gui.addTexture(BACKGROUND, 0, 0);
         gui.addTexture(FIRE, 18, 39);
 
-        gui.addFillingArrow(60, 10, 50 * recipe.getCookTime()).tooltip((x, y) ->
-                List.of(ClientTooltipComponent.create(EmiPort.ordered(EmiPort.translatable("emi.cooking.time", recipe.getCookTime() / 20f))))
-        );
+        gui.addFillingArrow(60, 10, 50 * recipe.getCookTime()).tooltip((x, y) -> List.of(ClientTooltipComponent
+                .create(EmiPort.ordered(EmiPort.translatable("emi.cooking.time", recipe.getCookTime() / 20f)))));
 
         gui.addSlot(output.get(0), 94, 9).drawBack(false);
         gui.addSlot(output.get(0), 94, 38);
@@ -83,10 +82,9 @@ public class EmiCookingPotRecipe implements EmiRecipe {
         for (int row = 0; row < 2; ++row) {
             for (int col = 0; col < 3; ++col) {
                 final int i = row * 3 + col;
-                EmiIngredient ingredient = (
-                        i < ingredients.size()
-                                ? ingredients.get(i)
-                                : EmiStack.EMPTY);
+                EmiIngredient ingredient = (i < ingredients.size()
+                        ? ingredients.get(i)
+                        : EmiStack.EMPTY);
                 gui.addSlot(ingredient,
                         col * slotSize,
                         row * slotSize);
